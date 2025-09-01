@@ -1,18 +1,22 @@
 #
-# Wi-Fi Calling Ruleset for Clash
+# Wi-Fi Calling Ruleset for Clash (Enhanced Version)
 #
 # Maintainer: Gemini
-# Last Updated: 2024-08-05
+# Last Updated: 2025-09-01
 #
 # 此规则集旨在解决大部分境外运营商Wi-Fi Calling在特殊网络环境下的连接问题。
+# 结合了社区贡献和运营商的公开网络信息。
 #
 
 payload:
-  # 核心规则 (所有运营商通用，必须保留)
+  # --- 核心与通用规则 (所有运营商通用，必须保留) ---
+  # 3GPP标准域名，用于服务发现
   - 'DOMAIN-SUFFIX,3gppnetwork.org'
+  # 苹果设备地区/服务检测，对iPhone用户尤其重要
+  - 'DOMAIN-SUFFIX,gspe1-ssl.ls.apple.com'
 
   # --- 美国 (USA) ---
-  # T-Mobile / Sprint / Google Fi / Ultra Mobile / Mint Mobile
+  # T-Mobile / Sprint / Google Fi / Ultra Mobile / Mint Mobile 等 T-Mobile系
   - 'DOMAIN-KEYWORD,t-mobile'
   - 'IP-CIDR,66.94.0.0/19'
   - 'IP-CIDR,208.54.0.0/16'
@@ -26,37 +30,73 @@ payload:
   - 'IP-CIDR,69.78.0.0/16'
 
   # --- 英国 (United Kingdom) ---
+  # EE / CMLink UK (使用EE网络)
   - 'DOMAIN-SUFFIX,ee.co.uk'
-  - 'DOMAIN-SUFFIX,o2.co.uk'
+  - 'IP-CIDR,46.68.0.0/17' # CMLink UK
+  # Vodafone (沃达丰)
   - 'DOMAIN-SUFFIX,vodafone.co.uk'
+  - 'DOMAIN-SUFFIX,entsrv-uk.vodafone.com'
+  - 'DOMAIN-SUFFIX,vuk-gto.prod.ondemandconnectivity.com'
+  # 以下为Vodafone UK (MCC:234, MNC:015) 的精确ePDG域名
+  - 'DOMAIN-SUFFIX,epdg.epc.mnc015.mcc234.pub.3gppnetwork.org'
+  - 'DOMAIN-SUFFIX,ss.epdg.epc.mnc015.mcc234.pub.3gppnetwork.org'
+  - 'DOMAIN-SUFFIX,ss.epdg.epc.geo.mnc015.mcc234.pub.3gppnetwork.org'
+  - 'IP-CIDR,88.82.0.0/19' # Vodafone UK
+  # O2 / Giffgaff (使用O2网络)
+  - 'DOMAIN-SUFFIX,o2.co.uk'
+  - 'IP-CIDR,87.194.0.0/16' # Giffgaff
+  # Three UK (3UK)
   - 'DOMAIN-SUFFIX,three.co.uk'
 
   # --- 香港 (Hong Kong) ---
-  # CSL / 1O1O / Club SIM
-  - 'DOMAIN-SUFFIX,ondemandconnectivity.com'
+  # CSL / 1O1O / Club SIM / Lucky SIM
+  - 'DOMAIN-SUFFIX,ondemandconnectivity.com' # eSIM服务管理
   - 'DOMAIN-SUFFIX,hkcsl.com'
+  - 'IP-CIDR,203.186.96.0/22' # PCCW/CSL
   # 3HK
   - 'DOMAIN-SUFFIX,three.com.hk'
-  # SmarTone
+  # SmarTone (数码通)
   - 'DOMAIN-SUFFIX,smartone.com'
-  # China Mobile HK
+  # China Mobile HK (CMHK)
   - 'DOMAIN-SUFFIX,hk.chinamobile.com'
+  - 'DOMAIN,epdg.ims.mnc454.mcc12.pub.3gppnetwork.org' # CMHK ePDG Host
 
   # --- 加拿大 (Canada) ---
   - 'DOMAIN-SUFFIX,rogers.com'
   - 'DOMAIN-SUFFIX,bell.ca'
   - 'DOMAIN-SUFFIX,telus.com'
+  - 'DOMAIN-SUFFIX,fido.ca' # Rogers子品牌
 
-  # --- 欧洲主要运营商 (Major European Carriers) ---
-  # Orange (法国/西班牙等)
-  - 'DOMAIN-SUFFIX,orange.com'
-  # Telefonica (西班牙/德国O2等)
-  - 'DOMAIN-SUFFIX,telefonica.com'
+  # --- 日本 (Japan) ---
+  - 'DOMAIN-SUFFIX,docomo.ne.jp'
+  - 'DOMAIN-SUFFIX,softbank.jp'
+  - 'DOMAIN-SUFFIX,kddi.com'
+
+  # --- 韩国 (South Korea) ---
+  - 'DOMAIN-SUFFIX,skttelecom.com'
+  - 'DOMAIN-SUFFIX,kt.com'
+  - 'DOMAIN-SUFFIX,uplus.co.kr'
+
+  # --- 台湾 (Taiwan) ---
+  - 'DOMAIN-SUFFIX,cht.com.tw'   # 中华电信
+  - 'DOMAIN-SUFFIX,taiwanmobile.com' # 台湾大哥大
+  - 'DOMAIN-SUFFIX,fetnet.net' # 远传电信
 
   # --- 澳大利亚 (Australia) ---
   - 'DOMAIN-SUFFIX,telstra.com.au'
   - 'DOMAIN-SUFFIX,optus.com.au'
+  - 'DOMAIN-SUFFIX,vodafone.com.au'
 
   # --- 新加坡 (Singapore) ---
   - 'DOMAIN-SUFFIX,singtel.com'
   - 'DOMAIN-SUFFIX,starhub.com'
+  - 'DOMAIN-SUFFIX,m1.com.sg'
+
+  # --- 欧洲主要运营商 (Major European Carriers) ---
+  # Orange (法国/西班牙等)
+  - 'DOMAIN-SUFFIX,orange.com'
+  - 'DOMAIN-SUFFIX,orange.fr'
+  # Telefonica (西班牙/德国O2/英国O2等)
+  - 'DOMAIN-SUFFIX,telefonica.com'
+  # Deutsche Telekom / T-Mobile DE (德国电信)
+  - 'DOMAIN-SUFFIX,telekom.de'
