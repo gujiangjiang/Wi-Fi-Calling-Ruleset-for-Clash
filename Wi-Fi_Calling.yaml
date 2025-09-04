@@ -108,6 +108,11 @@ payload:
   - 'DOMAIN-SUFFIX,optus.com.au'
   - 'DOMAIN-SUFFIX,vodafone.com.au'
 
+  # --- 新西兰 (New Zealand) ---
+  # One NZ (formerly Vodafone NZ)
+  - 'DOMAIN-SUFFIX,one.nz'
+  - 'DOMAIN-SUFFIX,epdg.epc.mnc01.mcc530.pub.3gppnetwork.org'
+
   # --- 新加坡 (Singapore) ---
   - 'DOMAIN-SUFFIX,singtel.com'
   - 'DOMAIN-SUFFIX,starhub.com'
@@ -121,3 +126,5 @@ payload:
   - 'DOMAIN-SUFFIX,telefonica.com'
   # Deutsche Telekom / T-Mobile DE (德国电信)
   - 'DOMAIN-SUFFIX,telekom.de'
+
+
