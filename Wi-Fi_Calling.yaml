@@ -2,7 +2,7 @@
 # Wi-Fi Calling Ruleset for Clash (Enhanced Version)
 #
 # Maintainer: Gemini
-# Last Updated: 2025-09-01
+# Last Updated: 2025-09-05
 #
 # 此规则集旨在解决大部分境外运营商Wi-Fi Calling在特殊网络环境下的连接问题。
 # 结合了社区贡献和运营商的公开网络信息。
@@ -18,8 +18,22 @@ payload:
   # --- 美国 (USA) ---
   # T-Mobile / Sprint / Google Fi / Ultra Mobile / Mint Mobile 等 T-Mobile系
   - 'DOMAIN-KEYWORD,t-mobile'
+  - 'DOMAIN-KEYWORD,ultramobile'
+  - 'DOMAIN-SUFFIX,crl.t-mobile.com'
+  - 'DOMAIN-SUFFIX,eas3.msg.t-mobile.com'
+  - 'DOMAIN-SUFFIX,mascns.t-mobile.com'
+  - 'DOMAIN-SUFFIX,ns.sipgeo.t-mobile.com'
+  - 'DOMAIN-SUFFIX,optimizely.com' # T-Mobile US使用的A/B测试和功能开关服务
+  - 'DOMAIN-SUFFIX,redirect.ultra.me'
+  - 'DOMAIN-SUFFIX,ultramobile.com'
+  # T-Mobile ePDG
+  - 'DOMAIN-SUFFIX,depdg.epc.mnc260.mcc310.pub.3gppnetwork.org'
+  - 'DOMAIN-SUFFIX,epdg.epc.mnc240.mcc310.pub.3gppnetwork.org'
+  - 'DOMAIN-SUFFIX,epdg.epc.geo.mnc260.mcc310.pub.3gppnetwork.org'
+  # - 'DOMAIN-SUFFIX,epdg.epc.mnc260.mcc310.pub.3gppnetwork.org'
   - 'IP-CIDR,66.94.0.0/19'
   - 'IP-CIDR,208.54.0.0/16'
+  - 'IP-CIDR,206.29.177.36/32' # 新增IP
   # AT&T
   - 'DOMAIN-KEYWORD,att'
   - 'DOMAIN-SUFFIX,vowifi.net'
@@ -33,28 +47,35 @@ payload:
   # EE / CMLink UK (使用EE网络)
   - 'DOMAIN-SUFFIX,ee.co.uk'
   - 'IP-CIDR,46.68.0.0/17' # CMLink UK
-  # Vodafone (沃达丰)
+  # Vodafone (沃达丰) / VOXI (子品牌)
   - 'DOMAIN-SUFFIX,vodafone.co.uk'
   - 'DOMAIN-SUFFIX,entsrv-uk.vodafone.com'
   - 'DOMAIN-SUFFIX,vuk-gto.prod.ondemandconnectivity.com'
-  # 以下为Vodafone UK (MCC:234, MNC:015) 的精确ePDG域名
   - 'DOMAIN-SUFFIX,epdg.epc.mnc015.mcc234.pub.3gppnetwork.org'
   - 'DOMAIN-SUFFIX,ss.epdg.epc.mnc015.mcc234.pub.3gppnetwork.org'
   - 'DOMAIN-SUFFIX,ss.epdg.epc.geo.mnc015.mcc234.pub.3gppnetwork.org'
   - 'IP-CIDR,88.82.0.0/19' # Vodafone UK
+  - 'IP-CIDR,148.252.160.0/19' # VOXI
   # O2 / Giffgaff (使用O2网络)
   - 'DOMAIN-SUFFIX,o2.co.uk'
+  - 'DOMAIN-SUFFIX,giffgaff.com'
+  - 'DOMAIN-SUFFIX,epdg.epc.mnc010.mcc234.pub.3gppnetwork.org'
   - 'IP-CIDR,87.194.0.0/16' # Giffgaff
   # Three UK (3UK)
   - 'DOMAIN-SUFFIX,three.co.uk'
+  - 'DOMAIN-SUFFIX,epdg.epc.mnc020.mcc234.pub.3gppnetwork.org'
+  - 'IP-CIDR,185.153.236.0/22'
+  - 'IP-CIDR,185.153.237.0/24'
 
   # --- 香港 (Hong Kong) ---
   # CSL / 1O1O / Club SIM / Lucky SIM
   - 'DOMAIN-SUFFIX,ondemandconnectivity.com' # eSIM服务管理
   - 'DOMAIN-SUFFIX,hkcsl.com'
+  - 'DOMAIN-SUFFIX,epdg.epc.mnc000.mcc454.pub.3gppnetwork.org' # CSL ePDG
   - 'IP-CIDR,203.186.96.0/22' # PCCW/CSL
   # 3HK
   - 'DOMAIN-SUFFIX,three.com.hk'
+  - 'DOMAIN-SUFFIX,wlan.three.com.hk'
   # SmarTone (数码通)
   - 'DOMAIN-SUFFIX,smartone.com'
   # China Mobile HK (CMHK)
